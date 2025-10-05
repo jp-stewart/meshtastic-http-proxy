@@ -92,3 +92,19 @@ async def fromradio(all: TFStr="false"):
     elif len(bufs) > 0:
         content = bufs.pop(0)
     return Response(content=content, media_type="application/x-protobuf")
+
+@app.get("/index.html")
+async def index():
+    html_content = """
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>Meshtastic HTTP Proxy</title>
+    </head>
+    <body>
+        <h1>Welcome to the Meshtastic HTTP Proxy</h1>
+        <p>More information is available here: <a href="https://github.com/ianmcorvidae/meshtastic-http-proxy">https://github.com/ianmcorvidae/meshtastic-http-proxy</a></p>
+    </body>
+    </html>
+    """
+    return HTMLResponse(content=html_content, status_code=200)
